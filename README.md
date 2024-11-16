@@ -1,88 +1,121 @@
-# Go & React ToDo App
+# 🚀 Backend - Golang Application
 
-This is a simple **ToDo App** using **Go** for the backend and **React** for the frontend. The app is a basic **CRUD application** enabling users to **create**, **read**, **update**, and **delete** tasks. Originally created by [Burak Orkmez](https://github.com/burakorkmez), this project was featured on [freeCodeCamp's YouTube channel](https://www.youtube.com/watch?v=lNd7XlXwlho).
+Bem-vindo ao **Go todo App** desenvolvido em **Golang**! Este repositório contém o código-fonte para a API RESTful que alimenta a aplicação.
 
-## Table of Contents
-- [Technologies](#technologies)
-    - [Frontend](#frontend)
-    - [Backend](#backend)
-- [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-- [Features](#features)
-- [Usage](#usage)
-- [License](#license)
+## 🛠️ Tecnologias
 
-## Technologies
+- ⚙️ **Golang**: Linguagem de programação utilizada para construir a aplicação.
+- 🗄️ **MongoDB**: Banco de dados relacional para armazenar dados.
+- 🔧 **Docker**: Para orquestração e execução do ambiente de desenvolvimento.
+- 📦 **Fiber**: Framework de web leve e rápido.
 
-### Frontend
-- **React**: JavaScript library for building user interfaces
-- **TypeScript**: Superset of JavaScript with optional static typing
+## 📂 Estrutura do Projeto
 
-### Backend
-- **Go**: Programming language used for the backend
-- **Fiber**: Express-inspired web framework for Go
-- **MongoDB**: NoSQL database for storing tasks
+```plaintext
+project/
+├── cmd/                    # Pontos de entrada da aplicação
+│   └── app/                # Main da API
+│       └── main.go         # Arquivo principal da aplicação
+├── internal/               # Código interno da aplicação (não exportado)
+│   ├── config/             # Configurações e variáveis de ambiente
+│   │   └── config.go       # Arquivo de configuração
+│   ├── domain/             # Regras de negócio e entidades
+│   │   ├── user.go         # Entidade User
+│   │   └── other.go        # Outras entidades
+│   ├── handlers/           # Controladores e rotas HTTP
+│   │   ├── user_handler.go # Manipuladores relacionados a usuários
+│   │   └── other_handler.go
+│   ├── middleware/         # Middlewares HTTP
+│   │   └── auth.go         # Exemplo de middleware de autenticação
+│   ├── repository/         # Camada de acesso a dados (banco de dados)
+│   │   ├── user_repo.go    # Repositório de usuários
+│   │   └── other_repo.go
+│   ├── services/           # Lógica de aplicação (intermediária entre controllers e repositórios)
+│   │   ├── user_service.go # Serviço de usuário
+│   │   └── other_service.go
+│   ├── utils/              # Funções utilitárias (helpers)
+│   │   └── helpers.go
+│   └── validators/         # Validações e schemas
+│       └── user_validator.go
+├── pkg/                    # Código reutilizável (público para outros projetos)
+│   └── logger/             # Exemplo de biblioteca de logging
+│       └── logger.go
+├── migrations/             # Scripts de migração do banco de dados
+│   └── 0001_initial.sql
+├── docs/                   # Documentação da API (e.g., Swagger ou Postman)
+│   └── openapi.yaml
+├── tests/                  # Testes unitários e de integração
+│   ├── integration/        # Testes de integração
+│   └── unit/               # Testes unitários
+├── go.mod                  # Declaração de dependências do projeto
+├── go.sum                  # Hashes de dependências
+└── README.md               # Documentação do projeto
 
-## Getting Started
-
-### Prerequisites
-- [Go](https://golang.org/doc/install)
-- [Node.js](https://nodejs.org/) and npm (included with Node.js)
-- [MongoDB](https://www.mongodb.com/try/download/community)
-
-### Installation
-
-#### Clone the Repository
-```bash
-git clone <repository-url>
-cd todo-app
 ```
 
-#### Backend Setup
-1. **Navigate to the backend folder**:
+## 🚀 Como executar o projeto
+
+### Pré-requisitos
+
+- 🐳 **Docker** e **Docker Compose** instalados.
+- 🔧 **Golang** (versão 1.20 ou superior).
+- 🛠️ **Make** (opcional, para facilitar os comandos).
+
+### Passos
+
+1. Clone o repositório:
    ```bash
-   cd backend
+   git clone https://github.com/seu-usuario/sua-aplicacao-backend.git
+   cd sua-aplicacao-backend
    ```
-2. **Install dependencies**:
+
+2. Configure as variáveis de ambiente no arquivo `.env`:
+   ```dotenv
+   DATABASE_URL=postgres://user:password@localhost:5432/dbname?sslmode=disable
+   ```
+
+3. Suba o ambiente com Docker:
    ```bash
-   go mod download
+   docker-compose up -d
    ```
-3. **Set up environment variables** (create a `.env` file in the `backend` directory):
-   ```
-   MONGODB_URI=<your_mongodb_connection_string>
-   PORT=8080
-   ```
-4. **Run the backend**:
+
+4. Rode a aplicação:
    ```bash
    go run main.go
    ```
 
-#### Frontend Setup
-1. **Navigate to the frontend folder**:
+5. Acesse a API em: [http://localhost:8080](http://localhost:8080)
+
+## 📋 Endpoints
+
+- `GET /api/v1/resource` - Retorna todos os recursos.
+- `POST /api/v1/resource` - Cria um novo recurso.
+- `PUT /api/v1/resource/:id` - Atualiza um recurso existente.
+- `DELETE /api/v1/resource/:id` - Remove um recurso.
+
+## 🧪 Testes
+
+Execute os testes com:
+```bash
+go test ./...
+```
+
+## 🗂️ Contribuição
+
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature:
    ```bash
-   cd ../frontend
+   git checkout -b minha-feature
    ```
-2. **Install dependencies**:
+3. Envie sua feature:
    ```bash
-   npm install
-   ```
-3. **Run the frontend**:
-   ```bash
-   npm start
+   git push origin minha-feature
    ```
 
-#### Access the App
-- Open your browser and navigate to `http://localhost:3000`.
+## 🛡️ Licença
 
-## Features
-- **Create Task**: Add a new task to the list.
-- **Read Tasks**: View a list of tasks.
-- **Update Task**: Edit existing tasks.
-- **Delete Task**: Remove tasks from the list.
+Este projeto está sob a licença [MIT](LICENSE).
 
-## Usage
-To use the app, start by adding tasks to your list. Each task can be edited or deleted as needed.
+---
 
-## License
-This project is licensed under the MIT License.
+Se precisar de ajustes ou algo mais específico, é só avisar! 🚀
