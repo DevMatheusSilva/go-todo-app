@@ -1,88 +1,124 @@
-# Go & React ToDo App
+# Aplicativo ToDo com Go & React 🚀
 
-This is a simple **ToDo App** using **Go** for the backend and **React** for the frontend. The app is a basic **CRUD application** enabling users to **create**, **read**, **update**, and **delete** tasks. Originally created by [Burak Orkmez](https://github.com/burakorkmez), this project was featured on [freeCodeCamp's YouTube channel](https://www.youtube.com/watch?v=lNd7XlXwlho).
+Este é um simples aplicativo **ToDo** que utiliza Go no backend e React no frontend. O app é uma aplicação CRUD básica que permite aos usuários criar, ler, atualizar e deletar **todos**. Originalmente criado por Burak Orkmez, este projeto foi destaque no canal do freeCodeCamp no YouTube.
 
-## Table of Contents
-- [Technologies](#technologies)
-    - [Frontend](#frontend)
-    - [Backend](#backend)
-- [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-- [Features](#features)
-- [Usage](#usage)
-- [License](#license)
+## 📋 Índice
 
-## Technologies
+- [Tecnologias](#tecnologias)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+- [Começando 🚀](#começando-)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Instalação](#instalação)
+- [Funcionalidades 🌟](#funcionalidades-)
+- [Uso 📖](#uso-)
+- [Licença 📄](#licença-)
+
+## Tecnologias
 
 ### Frontend
-- **React**: JavaScript library for building user interfaces
-- **TypeScript**: Superset of JavaScript with optional static typing
+
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **TypeScript**: Superset do JavaScript com tipagem estática opcional.
+- **TanStack Query**: Biblioteca para gerenciamento de estado assíncrono e cache de dados.
+- **Chakra UI**: Biblioteca de componentes modular e acessível para React.
 
 ### Backend
-- **Go**: Programming language used for the backend
-- **Fiber**: Express-inspired web framework for Go
-- **MongoDB**: NoSQL database for storing tasks
 
-## Getting Started
+- **Go**: Linguagem de programação utilizada no backend.
+- **Fiber**: Framework web inspirado no Express para Go.
+- **MongoDB**: Banco de dados NoSQL para armazenar os **todos**.
 
-### Prerequisites
-- [Go](https://golang.org/doc/install)
-- [Node.js](https://nodejs.org/) and npm (included with Node.js)
-- [MongoDB](https://www.mongodb.com/try/download/community)
+## Começando 🚀
 
-### Installation
+### Pré-requisitos
 
-#### Clone the Repository
+- **Go**
+- **Node.js** e **npm** (incluído com o Node.js)
+- **MongoDB**
+
+### Instalação
+
+Como o backend e o frontend estão em branches diferentes (`develop/backend` e `develop/frontend`), você precisará clonar cada branch separadamente.
+
+#### Clonar o Repositório
+
+##### Backend
+
+Clone o branch do backend:
+
 ```bash
-git clone <repository-url>
-cd todo-app
+git clone -b develop/backend https://github.com/DevMatheusSilva/go-todo-app.git backend
 ```
 
-#### Backend Setup
-1. **Navigate to the backend folder**:
-   ```bash
-   cd backend
-   ```
-2. **Install dependencies**:
-   ```bash
-   go mod download
-   ```
-3. **Set up environment variables** (create a `.env` file in the `backend` directory):
-   ```
-   MONGODB_URI=<your_mongodb_connection_string>
-   PORT=8080
-   ```
-4. **Run the backend**:
-   ```bash
-   go run main.go
-   ```
+##### Frontend
 
-#### Frontend Setup
-1. **Navigate to the frontend folder**:
-   ```bash
-   cd ../frontend
-   ```
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-3. **Run the frontend**:
-   ```bash
-   npm start
-   ```
+Clone o branch do frontend:
 
-#### Access the App
-- Open your browser and navigate to `http://localhost:3000`.
+```bash
+git clone -b develop/frontend https://github.com/DevMatheusSilva/go-todo-app.git frontend
+```
 
-## Features
-- **Create Task**: Add a new task to the list.
-- **Read Tasks**: View a list of tasks.
-- **Update Task**: Edit existing tasks.
-- **Delete Task**: Remove tasks from the list.
+#### Configuração do Backend
 
-## Usage
-To use the app, start by adding tasks to your list. Each task can be edited or deleted as needed.
+Navegue para o diretório do backend:
 
-## License
-This project is licensed under the MIT License.
+```bash
+cd backend
+```
+
+Instale as dependências:
+
+```bash
+go mod download
+```
+
+Configure as variáveis de ambiente (crie um arquivo `.env` no diretório do backend):
+
+```
+MONGODB_URI=<sua_string_de_conexão_mongodb>
+PORT=3000
+```
+
+Navegue para o diretório do arquivo principal:
+
+```bash
+cd cmd/app
+
+```
+Execute o backend:
+
+```bash
+go run main.go
+```
+
+#### Configuração do Frontend
+
+Em uma nova janela de terminal, navegue para o diretório do frontend:
+
+```bash
+cd frontend
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Execute o frontend:
+
+```bash
+npm start
+```
+
+#### Acesse o App 🌐
+
+Abra seu navegador e acesse: [http://localhost:3000](http://localhost:3000)
+
+## Funcionalidades 🌟
+
+- **Criar Todo**: Adicione um novo **todo** à lista.
+- **Ler Todos**: Visualize a lista de **todos**.
+- **Atualizar Todo**: Edite **todos** existentes.
+- **Deletar Todo**: Remova **todos** da lista.
