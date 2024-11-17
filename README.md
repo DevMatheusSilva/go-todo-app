@@ -1,4 +1,4 @@
-# 🚀 Backend - Golang Application
+# 🚀 Backend - Go Todo App
 
 Bem-vindo ao **Go todo App** desenvolvido em **Golang**! Este repositório contém o código-fonte para a API RESTful que alimenta a aplicação.
 
