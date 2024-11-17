@@ -6,17 +6,11 @@ import (
 	"github.com/DevMatheusSilva/go-todo-app/cmd/internal/config/db"
 	"github.com/DevMatheusSilva/go-todo-app/cmd/internal/routes"
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 	"log"
 	"os"
 )
 
 func main() {
-	err := godotenv.Load("../internal/config/.env")
-	if err != nil {
-		log.Fatal("Error loading .env file:", err)
-	}
-
 	app := fiber.New()
 	ctx := context.Background()
 
