@@ -16,7 +16,7 @@ func main() {
 
 	client, database, err := db.Connect(ctx)
 	if err != nil {
-		fmt.Println("Error connecting to th database:", err)
+		fmt.Println("Error connecting to the database:", err)
 		return
 	}
 	defer client.Disconnect(ctx)
