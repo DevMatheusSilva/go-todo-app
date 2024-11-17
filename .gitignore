@@ -12,7 +12,8 @@
 *.out
 
 # Dependency directories (remove the comment below to include it)
-cmd/app/tmp
+tmp/
+cmd/app/tmp/
 # vendor/
 
 # Go workspace file

@@ -13,43 +13,32 @@ Bem-vindo ao **Go todo App** desenvolvido em **Golang**! Este repositório cont�
 
 ```plaintext
 project/
-├── cmd/                    # Pontos de entrada da aplicação
-│   └── app/                # Main da API
-│       └── main.go         # Arquivo principal da aplicação
-├── internal/               # Código interno da aplicação (não exportado)
-│   ├── config/             # Configurações e variáveis de ambiente
-│   │   └── config.go       # Arquivo de configuração
-│   ├── domain/             # Regras de negócio e entidades
-│   │   ├── user.go         # Entidade User
-│   │   └── other.go        # Outras entidades
-│   ├── handlers/           # Controladores e rotas HTTP
-│   │   ├── user_handler.go # Manipuladores relacionados a usuários
-│   │   └── other_handler.go
-│   ├── middleware/         # Middlewares HTTP
-│   │   └── auth.go         # Exemplo de middleware de autenticação
-│   ├── repository/         # Camada de acesso a dados (banco de dados)
-│   │   ├── user_repo.go    # Repositório de usuários
-│   │   └── other_repo.go
-│   ├── services/           # Lógica de aplicação (intermediária entre controllers e repositórios)
-│   │   ├── user_service.go # Serviço de usuário
-│   │   └── other_service.go
-│   ├── utils/              # Funções utilitárias (helpers)
-│   │   └── helpers.go
-│   └── validators/         # Validações e schemas
-│       └── user_validator.go
-├── pkg/                    # Código reutilizável (público para outros projetos)
-│   └── logger/             # Exemplo de biblioteca de logging
-│       └── logger.go
-├── migrations/             # Scripts de migração do banco de dados
-│   └── 0001_initial.sql
-├── docs/                   # Documentação da API (e.g., Swagger ou Postman)
-│   └── openapi.yaml
-├── tests/                  # Testes unitários e de integração
-│   ├── integration/        # Testes de integração
-│   └── unit/               # Testes unitários
-├── go.mod                  # Declaração de dependências do projeto
-├── go.sum                  # Hashes de dependências
-└── README.md               # Documentação do projeto
+├── cmd/                            # Pontos de entrada da aplicação
+│   └── app/                        # Main da API
+│       └── main.go                 # Arquivo principal da aplicação
+├── internal/                       # Código interno da aplicação
+│   ├── config/                     # Configurações da aplicação
+│   │   └── db/                     # Configurações relacionadas ao banco de dados
+│   │       └── db_connection.go    # Arquivo de conexão com o banco de dados
+│   ├── domain/                     # Regras de negócio e entidades       
+│   │   └── todo.go                 # Entidade Todo
+│   ├── handlers/                   # Controladores e rotas HTTP
+│   │   └── todo_handler.go         # Manipuladores relacionados às todos
+│   ├── repository/                 # Camada de acesso a dados (banco de dados)
+│   │   └── todo_repo.go            # Repositório de todos
+│   ├── routes/                     # Definição de rotas da aplicação
+│   │   └── todo_routes.go          # Rotas de todos
+│   ├── utils/                      # Funções utilitárias (helpers)
+│   │   └── consts/                 # Constantes da aplicação
+│   │       ├── error_consts.go     # Mensagems de erro
+│   └──     └── messages.go         # Mensagens de sucesso
+├── go.mod                          # Declaração de dependências do projeto
+├── go.sum                          # Hashes de dependências
+├── docker-compose.yml              # Arquivo de configuração do Docker Compose
+├── Dockerfile                      # Arquivo de configuração do Docker
+├── .gitignore                      # Pastas e diretórios a serem ignorados pelo Git
+├── air.toml                        # Configuração do Air (hot reload)
+└── README.md                       # Documentação do projeto
 
 ```
 
@@ -59,19 +48,18 @@ project/
 
 - 🐳 **Docker** e **Docker Compose** instalados.
 - 🔧 **Golang** (versão 1.20 ou superior).
-- 🛠️ **Make** (opcional, para facilitar os comandos).
 
 ### Passos
 
-1. Clone o repositório:
+1. Clone a branch do repositório que contém o backend:
    ```bash
-   git clone https://github.com/seu-usuario/sua-aplicacao-backend.git
-   cd sua-aplicacao-backend
+   git clone --single-branch --branch backend https://github.com/DevMatheusSilva/go-todo-app.git
+   cd go-todo-app
    ```
 
 2. Configure as variáveis de ambiente no arquivo `.env`:
    ```dotenv
-   DATABASE_URL=postgres://user:password@localhost:5432/dbname?sslmode=disable
+   MONGODB_URI=<sua_string_de_conexão_com_o_mongodb>
    ```
 
 3. Suba o ambiente com Docker:
@@ -84,21 +72,15 @@ project/
    go run main.go
    ```
 
-5. Acesse a API em: [http://localhost:8080](http://localhost:8080)
+5. Acesse a API em: [http://localhost:3000](http://localhost:8080)
+
 
 ## 📋 Endpoints
 
-- `GET /api/v1/resource` - Retorna todos os recursos.
-- `POST /api/v1/resource` - Cria um novo recurso.
-- `PUT /api/v1/resource/:id` - Atualiza um recurso existente.
-- `DELETE /api/v1/resource/:id` - Remove um recurso.
-
-## 🧪 Testes
-
-Execute os testes com:
-```bash
-go test ./...
-```
+- `GET /api/todos/`             - Retorna todas as todos cadastradas.
+- `POST /api/todos/`            - Cria uma nova todo.
+- `PATCH /api/todos/:id`        - Marca a todo como completa.
+- `DELETE /api/todos/:id`       - Remove uma todo.
 
 ## 🗂️ Contribuição
 
@@ -111,11 +93,3 @@ go test ./...
    ```bash
    git push origin minha-feature
    ```
-
-## 🛡️ Licença
-
-Este projeto está sob a licença [MIT](LICENSE).
-
----
-
-Se precisar de ajustes ou algo mais específico, é só avisar! 🚀
