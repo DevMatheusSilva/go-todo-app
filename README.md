@@ -7,7 +7,7 @@ Bem-vindo ao **Go todo App** desenvolvido em **Golang**! Este repositório cont�
 - ⚙️ **Golang**: Linguagem de programação utilizada para construir a aplicação.
 - 🗄️ **MongoDB**: Banco de dados relacional para armazenar dados.
 - 🔧 **Docker**: Para orquestração e execução do ambiente de desenvolvimento.
-- 📦 **Fiber**: Framework de web leve e rápido.
+- 📦 **Fiber**: Framework web leve e rápido.
 
 ## 📂 Estrutura do Projeto
 
